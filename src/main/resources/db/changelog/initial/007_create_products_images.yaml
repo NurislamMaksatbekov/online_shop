@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-products-image-table
+      author: Nurislam
+      changes:
+        - createTable:
+            tableName: products_images
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: image
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: long
+                  constraints:
+                    deleteCascade: true
+                    foreignKeyName: pfk_product_id
+                    references: products(id)
+                    nullable: false

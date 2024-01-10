@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-products-table
+      author: Nurislam
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cart_id
+                  type: long
+                  constraints:
+                    deleteCascade: true
+                    foreignKeyName: pc_fk_cart_id
+                    references: carts(id)
